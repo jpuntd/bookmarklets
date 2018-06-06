@@ -25,7 +25,7 @@ function sendfeedback(sheet_url) {
         feedback.forEach(function (panel) {
             let name = encodeURI(panel.querySelector('legend > div.panel-title').textContent.trim());
             let fb_text = encodeURI(panel.querySelector('textarea').value);
-            const link = sheet_url + '?p=' + pageid + '&s=' + school + '&n=' + nid + '&e=' + email + '&p=' + name + '&fb=' + fb_text;
+            const link = sheet_url + '?pid=' + pageid + '&s=' + school + '&n=' + nid + '&e=' + email + '&p=' + name + '&fb=' + fb_text;
             panel.innerHTML = `<a href="${link}" target="_blank">❤ Like ❤</a>` + panel.innerHTML;
         });
     });
