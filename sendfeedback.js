@@ -12,13 +12,13 @@ function sendfeedback(sheet_url) {
         credentials: 'include'
     };
 
-    fetch("https://www.cultuurkuur.be/print/" + nid, myInit).then((res) => res.text()).then(function (data) {
+    fetch("https://paginas.cultuurkuur.be/print/" + nid, myInit).then((res) => res.text()).then(function (data) {
         const matches = data.match(find_email);
         let email;
         if (matches) {
             email = matches[1];
         } else {
-            email = 'https://www/cultuurkuur.be/print/' + nid;
+            email = 'https://www.cultuurkuur.be/print/' + nid;
         }
         email = encodeURI(email);
 
