@@ -2,8 +2,10 @@ function sendfeedback(sheet_url) {
     const find_email = /<td class="label">E-mail contactpersoon:<\/td>\s*<td>(.*)<\/td>/m;
     const feedback = document.getElementById('edit-culture-partner-feedback').querySelectorAll('fieldset.panel');
 
-    const pageid = document.querySelector('#main-content > div > ul > li:nth-child(1) > a').getAttribute('href').split('/')[4];
-    const school = document.querySelector('#main-content > div > ul > li:nth-child(1) > a').getAttribute('href').split('/')[3];
+    document.querySelector('#block-dynamo3-header > ul > li:nth-child(1) > a')
+
+    const pageid = document.querySelector('#block-dynamo3-header > ul > li:nth-child(1) > a').getAttribute('href').split('/')[4];
+    const school = document.querySelector('#block-dynamo3-header > ul > li:nth-child(1) > a').getAttribute('href').split('/')[3];
     const nid = window.location.href.split('/')[4];
     var myHeaders = new Headers();
     var myInit = {
