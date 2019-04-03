@@ -25,8 +25,9 @@ function sendfeedback(sheet_url) {
         email = encodeURI(email);
 
         feedback.forEach(function (panel) {
-            let name = encodeURI(panel.querySelector('legend').textContent.trim());
-            let fb_text = encodeURI(panel.querySelector('div.fieldset-wrapper textarea').value);
+            encodeURIComponent
+            let name = encodeURIComponent(panel.querySelector('legend').textContent.trim());
+            let fb_text = encodeURIComponent(panel.querySelector('div.fieldset-wrapper textarea').value);
             const link = sheet_url + '?p_id=' + pageid + '&s=' + school + '&n=' + nid + '&e=' + email + '&p=' + name + '&fb=' + fb_text;
             panel.innerHTML = `<a href="${link}" target="_blank">❤ Like ❤</a>` + panel.innerHTML;
         });
