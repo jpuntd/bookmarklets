@@ -1,10 +1,12 @@
 function sendfeedback(sheet_url) {
     const find_email = /<td class="label">E-mail contactpersoon:<\/td>\s*<td>(.*)<\/td>/m;
-    const feedback = document.getElementById('edit-culture-partner-feedback').querySelectorAll('fieldset.panel');
+    const feedback = document.getElementById('edit-culture-partner-feedback').querySelectorAll('fieldset');
 
-    const pageid = document.querySelector('#block-dynamo3-header > ul > li:nth-child(1) > a').getAttribute('href').split('/')[4];
-    const school = document.querySelector('#block-dynamo3-header > ul > li:nth-child(1) > a').getAttribute('href').split('/')[3];
+    const pagelink = document.querySelector('#block-dynamo3-header > ul > li:nth-child(1) > a').href.split('/');
+    const school = pagelink[5];
+    const pageid = pagelink[6];
     const nid = window.location.href.split('/')[4];
+        console.log(feedback);
     var myHeaders = new Headers();
     var myInit = {
         method: 'GET',
@@ -23,9 +25,9 @@ function sendfeedback(sheet_url) {
         email = encodeURI(email);
 
         feedback.forEach(function (panel) {
-            let name = encodeURI(panel.querySelector('legend > div.panel-title').textContent.trim());
-            let fb_text = encodeURI(panel.querySelector('textarea').value);
-            const link = sheet_url + '?pid=' + pageid + '&s=' + school + '&n=' + nid + '&e=' + email + '&p=' + name + '&fb=' + fb_text;
+            let name = encodeURI(panel.querySelector('legend').textContent.trim());
+            let fb_text = encodeURI(panel.querySelector('div.fieldset-wrapper textarea').value);
+            const link = sheet_url + '?p_id=' + pageid + '&s=' + school + '&n=' + nid + '&e=' + email + '&p=' + name + '&fb=' + fb_text;
             panel.innerHTML = `<a href="${link}" target="_blank">❤ Like ❤</a>` + panel.innerHTML;
         });
     });
